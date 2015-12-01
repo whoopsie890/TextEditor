@@ -1,23 +1,18 @@
 {% extends "index.html" %}
 {% block content %}
-    <h1>Reverse String</h1>
-    <form name="input" action="">
-      <div class="input-group">
-        <input class="form-control1" type="text" name="orig" id="orig" placeholder="Type a string you want to be reversed"/> 
-        <span class="input-group-btn">
-          <button class="btn btn-primary" onClick="calculateArea(); return false;">Reverse String!</button>
-        </span>
-      </div>
-    </form>
-    <div class="output-group">
-        <label for="">The reverse string is: </label><input type="textbox" name="output" id="output" /> 
+    <h3>Text Editor</h3>
+    
+    <div class="texteditor">
+      <textarea id="text"></textarea>
+    </div>
+    <div class="group-btn">
+        <button class="btn-save" onClick="save(); return false;">Save</button>
     </div>
     
+    
     <script type="text/javascript">
-      function calculateArea() {
-        var str = document.getElementById('orig').value;
-        var rev = str.split('').reverse().join('');
-        document.getElementById('output').value = rev;
+      function save() {
+        window.alert("test");
       }
     </script>
 {% endblock %}
