@@ -1,18 +1,27 @@
 {% extends "index.html" %}
 {% block content %}
     <h3>Text Editor</h3>
-    
-    <div class="texteditor">
-      <textarea id="text"></textarea>
-    </div>
+    <form data-persist="garlic" method="POST">
+      <div class="texteditor">
+        <textarea id="output"></textarea>
+      </div>
+    </form>
     <div class="group-btn">
-        <button class="btn-save" onClick="save(); return false;">Save</button>
-    </div>
+      <input id="fileInput" accept='text/plain' type="file" onchange='openFile(event)' style="display:none;" />
+      <input type="button" value="Open" onclick="document.getElementById('fileInput').click();" />
+    </div> 
     
-    
-    <script type="text/javascript">
-      function save() {
-        window.alert("test");
-      }
+    <script>
+      var openFile = function(event) {
+        var input = event.target;
+
+        var reader = new FileReader();
+        reader.onload = function(){
+          var text = reader.result;
+          var node = document.getElementById('output');
+          node.innerText = text;
+        };
+        reader.readAsText(input.files[0]);
+      };
     </script>
 {% endblock %}
